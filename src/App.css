@@ -1,3 +1,13 @@
+@font-face {
+    font-family: "Hyemin"; 
+    font-weight: 500; 
+    src: url("./fonts/IM_Hyemin-Regular.ttf")
+}
+
+body {
+    font-family:"Hyemin"; 
+}
+
 .container {
     margin: auto; 
     max-width: 600px; 
