@@ -1,7 +1,6 @@
 import React, {Component} from "react";  
 import "./App.css"; 
 
-
 export default class App extends Component {
 
   state = {
@@ -60,6 +59,8 @@ export default class App extends Component {
     })
 
     this.setState({ todoData: newTodoData}); 
+    // 로컬에 저장 
+    // window.localStorage.setItem("newTodoData", JSON.stringify(newTodoData)); 
   }
   
 
