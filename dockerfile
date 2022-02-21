@@ -10,4 +10,5 @@ COPY ./ ./
 
 CMD ["npm", "run", "start"]
 
-# docker run -p 3000:3000 ecd3a 로 실행
+# 포트번호 4000번으로 실행
+# docker run -p 4000:3000 ecd3a 로 실행
