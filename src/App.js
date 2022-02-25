@@ -1,12 +1,10 @@
-import React, {Component} from "react";  
+import React, { useState } from "react";  
 import "./App.css"; 
 
-export default class App extends Component {
-
-  state = {
-    todoData : [],
-    value: ""
-  }
+export default function App() {
+  
+  const [todoData, setTodoData] = useState([]); 
+  const [value, setValue] = useState(""); 
 
 
   btnStyle = {
@@ -64,7 +62,7 @@ export default class App extends Component {
   }
   
 
-  render() {
+{
     return (
       <div className="container">
         <div className="todoBlock">
