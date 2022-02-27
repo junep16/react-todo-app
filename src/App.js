@@ -27,16 +27,10 @@ export default function App() {
       <div className="container">
         <div className="todoBlock">
           <div className="title">
-            <h1>✅ TO DO</h1>
+            <h1 className="text-3xl">✅ TO DO</h1>
           </div>
           <List todoData={todoData} setTodoData={setTodoData}/>
           <Form handleSubmit={handleSubmit} value={value} setValue={setValue} />
-            <input
-              type="submit"
-              value="입력"
-              className="btn"
-              style={{flex:1}}
-            />
         </div>
       </div>
     )
