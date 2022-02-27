@@ -7,15 +7,11 @@ const List = React.memo(({
   todoData, 
   setTodoData,
   provided, 
-  snapshot
+  snapshot, 
+  handleClick
 }) => {
 
   console.log('list component'); 
-  const handleClick = (id) => {
-    let newTodoData = todoData.filter((data) => data.id !== id)
-    console.log("newTodoData", newTodoData);  
-    setTodoData(newTodoData)
-  };
 
   const handleCompleteChange = (id) => {
     let newTodoData = todoData.map(data => {
