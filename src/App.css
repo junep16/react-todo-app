@@ -11,16 +11,3 @@
 body {
     font-family:"Hyemin"; 
 }
-
-.container {
-    margin: auto; 
-    max-width: 600px; 
-}
-
-.todoBlock {
-    padding: 30px; 
-    margin-top: 50px; 
-    background: #FFF; 
-    border-radius: 10px; 
-    box-shadow: -9px 17px 13px rgb(0 0 0 / 16%); 
-}
