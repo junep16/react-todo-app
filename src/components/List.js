@@ -1,6 +1,6 @@
 import React from 'react'
 
-const List = ({
+const List = React.memo(({
   id, 
   title, 
   completed, 
@@ -10,6 +10,7 @@ const List = ({
   snapshot
 }) => {
 
+  console.log('list component'); 
   const handleClick = (id) => {
     let newTodoData = todoData.filter((data) => data.id !== id)
     console.log("newTodoData", newTodoData);  
@@ -42,7 +43,7 @@ const List = ({
           </div>
     </div>  
   )
-}
+});
 
 export default List; 
 
