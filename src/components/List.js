@@ -29,16 +29,20 @@ const List = React.memo(({
   // 리스트 수정 기능
   const listText = useRef(); 
   const editInput = useRef(); 
+  const editButton = useRef(); 
   
   const editListItem = (e) => {
     // 인풋 hidden 제거
-    editInput.current.classList.remove("hidden"); 
+    editInput.current.classList.remove("hidden");
+    editButton.current.classList.remove("hidden"); 
+    listText.current.classList.add("hidden"); 
     
     // 수정 전 텍스트 인풋에 넣어주기
     let currentListText = listText.current.innerText;
     editInput.current.placeholder = currentListText; 
-
+    
     // 인풋에 작성한 텍스트 title로 넣어주기.. 
+    title = "이걸로 바꾼다 이게 뭐냐면 새롭게 작성한거"; 
     
   }
 
@@ -49,8 +53,9 @@ const List = React.memo(({
           <div className="flex items-center">
             <input type="checkbox" defaultChecked={false} onChange={() => {handleCompleteChange(id)}}></input>
             <span className={ completed ? "line-through" : undefined } onClick={editListItem} ref={listText}>{title}</span>
-            <input className="hidden ml-5 rounded pl-2" type="text" placeholder={"입력"}
+            <input className="hidden ml-1 rounded pl-2" type="text" placeholder={"입력"}
             ref={editInput}></input>
+            <button className="hidden ml-1 rounded bg-blue-100" ref={editButton}>수정</button>
           </div>
           <div className="flex items-center">
             <button onClick= {() => handleClick(id)}>X</button>
