@@ -15,7 +15,7 @@ export default function Form( {handleSubmit, value, setValue} ) {
           name="value"
           placeholder="해야할 일을 입력해주세요"
           value={value}
-          onChange={handleChange}
+          onChange={handleChange} 
         />
         <input
           className="p-2 text-blue-400 border-2 border-blue-400 rounded hover:text-white"

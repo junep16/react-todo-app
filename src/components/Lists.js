@@ -4,7 +4,11 @@ import { Draggable } from 'react-beautiful-dnd';
 import { Droppable } from 'react-beautiful-dnd';
 import { DragDropContext } from 'react-beautiful-dnd';
 
-const Lists = React.memo(({ todoData, setTodoData, handleClick}) => {
+const Lists = React.memo(({ 
+  todoData, 
+  setTodoData, 
+  handleClick,  
+}) => {
   console.log('lists component'); 
 
   const handleEnd = (result) => { 
@@ -42,7 +46,7 @@ const Lists = React.memo(({ todoData, setTodoData, handleClick}) => {
                 setTodoData={setTodoData}
                 provided={provided}
                 snapshot={snapshot}
-                handleClick={handleClick}
+                handleClick={handleClick} 
               />
             )}
               </Draggable>
