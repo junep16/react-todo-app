@@ -18,16 +18,22 @@ export default function App() {
   const handleSubmit = (e) => {
     e.preventDefault(); 
 
-    // 새로운 할 일 데이터
+  // 새로운 할 일 데이터
     let newTodo = {
       id: Date.now(), 
       title: value, 
       completed: false, 
-    }
+    } 
 
-    // 원래 있던 할 일에 새로운 할 일 더해주기 
+  // 원래 있던 할 일에 새로운 할 일 더해주기 
     setTodoData(prev => [...prev, newTodo]); 
     setValue(""); 
+  }
+
+  // 전체 삭제해주기
+  const deleteListItems = (e) => {  
+    let resetTodoData = [];  
+    setTodoData(resetTodoData); 
   }
 
     return (
@@ -35,6 +41,7 @@ export default function App() {
         <div className="w-full p-6 m-4 bg-white rounded shadow-sm lg:w-3/4 lg:max-w-lg">
           <div className="flex justify-between mb-3">
             <h1 className="">✅ TO DO</h1>
+            <button onClick={deleteListItems} className="bg-gray-100 rounded w-24 hover:opacity-30" type="button">모두 지우기</button>
           </div>
           <Lists handleClick={handleClick} todoData={todoData} setTodoData={setTodoData}/>
           <Form handleSubmit={handleSubmit} value={value} setValue={setValue} />

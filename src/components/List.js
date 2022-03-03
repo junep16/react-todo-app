@@ -20,7 +20,7 @@ const List = React.memo(({
       }
       return data; 
     })
-    setTodoData(newTodoData);  
+    setTodoData(newTodoData); 
     // 로컬에 저장 
     // window.localStorage.setItem("newTodoData", JSON.stringify(newTodoData)); 
   }
