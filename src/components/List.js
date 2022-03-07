@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 
 const List = React.memo(({
   id, 
@@ -8,10 +8,15 @@ const List = React.memo(({
   setTodoData,
   provided, 
   snapshot, 
-  handleClick
+  handleClick,  
 }) => {
 
+  const [newValue, setNewValue] = useState(""); 
+  const [newEdit, setNewEdit] = useState(false);  
+
   console.log('list component'); 
+  console.log(todoData); 
+  // todoData의 몇번째 인덱스에 있는 타이틀 변경해주기!!!!!!!!!
 
   const handleCompleteChange = (id) => {
     let newTodoData = todoData.map(data => {
@@ -31,7 +36,11 @@ const List = React.memo(({
   const editInput = useRef(); 
   const editButton = useRef(); 
   
-  const editListItem = (e) => {
+  const getInputValue = (e) => { 
+    setNewValue(e.target.value); 
+  }
+
+  const handleListItem = (e) => {
     // 인풋 hidden 제거
     editInput.current.classList.remove("hidden");
     editButton.current.classList.remove("hidden"); 
@@ -40,11 +49,24 @@ const List = React.memo(({
     // 수정 전 텍스트 인풋에 넣어주기
     let currentListText = listText.current.innerText;
     editInput.current.placeholder = currentListText; 
-    
-    // 인풋에 작성한 텍스트 title로 넣어주기.. 
-    title = "이걸로 바꾼다 이게 뭐냐면 새롭게 작성한거"; 
-    
   }
+
+  const handleEdit = (id) => {
+    console.log("a"); 
+    console.log(newValue); 
+    let newTodoData = todoData.map(data => {
+      if(data.id === id) {   
+        data.title = newValue; 
+        console.log(data.title); 
+      }
+      return data; 
+    })
+    setTodoData(newTodoData);  
+    editInput.current.classList.add("hidden");
+    editButton.current.classList.add("hidden"); 
+    listText.current.classList.remove("hidden"); 
+  }
+
 
   return (
     <div key={id} {...provided.draggableProps} ref={provided.innerRef} {...provided.dragHandleProps}
@@ -52,10 +74,23 @@ const List = React.memo(({
           > 
           <div className="flex items-center">
             <input type="checkbox" defaultChecked={false} onChange={() => {handleCompleteChange(id)}}></input>
-            <span className={ completed ? "line-through" : undefined } onClick={editListItem} ref={listText}>{title}</span>
-            <input className="hidden ml-1 rounded pl-2" type="text" placeholder={"입력"}
-            ref={editInput}></input>
-            <button className="hidden ml-1 rounded bg-blue-100" ref={editButton}>수정</button>
+            <span className={ completed ? "line-through" : undefined } onClick={handleListItem} ref={listText}>{title}</span>
+            
+            <input 
+            className="hidden ml-1 rounded pl-2" 
+            type="text" 
+            placeholder={"입력"}
+            ref={editInput}
+            onChange={getInputValue}
+            value={newValue}
+            >  
+            </input>
+            <button 
+            className="hidden ml-1 rounded bg-blue-100" 
+            ref={editButton}
+            onClick={() => handleEdit(id)}
+            >수정
+            </button> 
           </div>
           <div className="flex items-center">
             <button onClick= {() => handleClick(id)}>X</button>

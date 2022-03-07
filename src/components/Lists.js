@@ -46,7 +46,7 @@ const Lists = React.memo(({
                 setTodoData={setTodoData}
                 provided={provided}
                 snapshot={snapshot}
-                handleClick={handleClick} 
+                handleClick={handleClick}   
               />
             )}
               </Draggable>

@@ -43,7 +43,8 @@ export default function App() {
             <h1 className="">✅ TO DO</h1>
             <button onClick={deleteListItems} className="bg-pink-100 rounded w-24 hover:opacity-30" type="button">모두 지우기</button>
           </div>
-          <Lists handleClick={handleClick} todoData={todoData} setTodoData={setTodoData}/>
+          <Lists handleClick={handleClick} todoData={todoData} setTodoData={setTodoData} value={value} setValue={setValue}
+          />
           <Form handleSubmit={handleSubmit} value={value} setValue={setValue} />
         </div>
       </div>
