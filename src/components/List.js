@@ -12,11 +12,6 @@ const List = React.memo(({
 }) => {
 
   const [newValue, setNewValue] = useState(""); 
-  const [newEdit, setNewEdit] = useState(false);  
-
-  console.log('list component'); 
-  console.log(todoData); 
-  // todoData의 몇번째 인덱스에 있는 타이틀 변경해주기!!!!!!!!!
 
   const handleCompleteChange = (id) => {
     let newTodoData = todoData.map(data => {
@@ -26,8 +21,6 @@ const List = React.memo(({
       return data; 
     })
     setTodoData(newTodoData); 
-    // 로컬에 저장 
-    // window.localStorage.setItem("newTodoData", JSON.stringify(newTodoData)); 
   }
 
 

@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";  
+import React, { useState, useCallback, useEffect } from "react";  
 import "./App.css"; 
 import Form from "./components/Form";
 import Lists from "./components/Lists";
@@ -8,6 +8,13 @@ export default function App() {
 
   const [todoData, setTodoData] = useState([]); 
   const [value, setValue] = useState(""); 
+  const [localData, setLocalData] = useState([]); 
+
+  useEffect( () => {
+    if(window.localStorage.getItem("newTodoData")){
+      // 해야 할 일
+    }
+  },[]); 
 
   const handleClick = useCallback((id) => {
     let newTodoData = todoData.filter((data) => data.id !== id); 
@@ -17,7 +24,6 @@ export default function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault(); 
-
   // 새로운 할 일 데이터
     let newTodo = {
       id: Date.now(), 
@@ -28,6 +34,11 @@ export default function App() {
   // 원래 있던 할 일에 새로운 할 일 더해주기 
     setTodoData(prev => [...prev, newTodo]); 
     setValue(""); 
+
+  // 로컬스토리지에 저장 
+    setLocalData(prev => [...prev, newTodo]); 
+    localData("");
+    window.localStorage.setItem("newTodoData", JSON.stringify(todoData));  
   }
 
   // 전체 삭제 기능
